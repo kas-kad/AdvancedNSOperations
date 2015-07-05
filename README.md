@@ -1,5 +1,5 @@
 # AdvancedNSOperations
-Objective-C implementation of concepts introduced at WWDC 2015 Session 226 Advanced NSOperations. (https://developer.apple.com/videos/wwdc/2015/?id=226)
+Objective-C implementation inspired by concepts introduced at WWDC 2015 Session 226 Advanced NSOperations. (https://developer.apple.com/videos/wwdc/2015/?id=226)
 
 Work in progress.
 
