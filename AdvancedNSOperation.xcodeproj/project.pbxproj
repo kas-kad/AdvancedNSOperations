@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50383B471B49518800FEB2B7 /* CKContainer+Operations.m in Sources */ = {isa = PBXBuildFile; fileRef = 50383B261B49518800FEB2B7 /* CKContainer+Operations.m */; };
+		50383B481B49518800FEB2B7 /* NSOperation+Advanced.m in Sources */ = {isa = PBXBuildFile; fileRef = 50383B281B49518800FEB2B7 /* NSOperation+Advanced.m */; };
+		50383B491B49518800FEB2B7 /* KADCloudKitCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 50383B2B1B49518800FEB2B7 /* KADCloudKitCondition.m */; };
+		50383B4A1B49518800FEB2B7 /* KADMutualExclusive.m in Sources */ = {isa = PBXBuildFile; fileRef = 50383B2D1B49518800FEB2B7 /* KADMutualExclusive.m */; };
+		50383B4B1B49518800FEB2B7 /* KADOperationConditionResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 50383B301B49518800FEB2B7 /* KADOperationConditionResult.m */; };
+		50383B4C1B49518800FEB2B7 /* KADReachabilityCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 50383B321B49518800FEB2B7 /* KADReachabilityCondition.m */; };
+		50383B4D1B49518800FEB2B7 /* KADRemoteNotificationsCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 50383B341B49518800FEB2B7 /* KADRemoteNotificationsCondition.m */; };
+		50383B4E1B49518800FEB2B7 /* NSError+KADOperationErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 50383B361B49518800FEB2B7 /* NSError+KADOperationErrors.m */; };
+		50383B4F1B49518800FEB2B7 /* KADBlockObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 50383B391B49518800FEB2B7 /* KADBlockObserver.m */; };
+		50383B501B49518800FEB2B7 /* KADExclusivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50383B3D1B49518800FEB2B7 /* KADExclusivityController.m */; };
+		50383B511B49518800FEB2B7 /* KADOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 50383B3F1B49518800FEB2B7 /* KADOperationQueue.m */; };
+		50383B521B49518800FEB2B7 /* KADBlockOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 50383B421B49518800FEB2B7 /* KADBlockOperation.m */; };
+		50383B531B49518800FEB2B7 /* KADGroupOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 50383B441B49518800FEB2B7 /* KADGroupOperation.m */; };
+		50383B541B49518800FEB2B7 /* KADOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 50383B461B49518800FEB2B7 /* KADOperation.m */; };
+		50383B571B49713500FEB2B7 /* KADBackgroundObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 50383B561B49713500FEB2B7 /* KADBackgroundObserver.m */; };
 		50E34C351B4423C4002DD412 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E34C341B4423C4002DD412 /* main.m */; };
 		50E34C381B4423C4002DD412 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E34C371B4423C4002DD412 /* AppDelegate.m */; };
 		50E34C3B1B4423C4002DD412 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E34C3A1B4423C4002DD412 /* ViewController.m */; };
@@ -27,6 +42,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50383B251B49518800FEB2B7 /* CKContainer+Operations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKContainer+Operations.h"; sourceTree = "<group>"; };
+		50383B261B49518800FEB2B7 /* CKContainer+Operations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKContainer+Operations.m"; sourceTree = "<group>"; };
+		50383B271B49518800FEB2B7 /* NSOperation+Advanced.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOperation+Advanced.h"; sourceTree = "<group>"; };
+		50383B281B49518800FEB2B7 /* NSOperation+Advanced.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOperation+Advanced.m"; sourceTree = "<group>"; };
+		50383B2A1B49518800FEB2B7 /* KADCloudKitCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KADCloudKitCondition.h; sourceTree = "<group>"; };
+		50383B2B1B49518800FEB2B7 /* KADCloudKitCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KADCloudKitCondition.m; sourceTree = "<group>"; };
+		50383B2C1B49518800FEB2B7 /* KADMutualExclusive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KADMutualExclusive.h; sourceTree = "<group>"; };
+		50383B2D1B49518800FEB2B7 /* KADMutualExclusive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KADMutualExclusive.m; sourceTree = "<group>"; };
+		50383B2E1B49518800FEB2B7 /* KADOperationCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KADOperationCondition.h; sourceTree = "<group>"; };
+		50383B2F1B49518800FEB2B7 /* KADOperationConditionResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KADOperationConditionResult.h; sourceTree = "<group>"; };
+		50383B301B49518800FEB2B7 /* KADOperationConditionResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KADOperationConditionResult.m; sourceTree = "<group>"; };
+		50383B311B49518800FEB2B7 /* KADReachabilityCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KADReachabilityCondition.h; sourceTree = "<group>"; };
+		50383B321B49518800FEB2B7 /* KADReachabilityCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KADReachabilityCondition.m; sourceTree = "<group>"; };
+		50383B331B49518800FEB2B7 /* KADRemoteNotificationsCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KADRemoteNotificationsCondition.h; sourceTree = "<group>"; };
+		50383B341B49518800FEB2B7 /* KADRemoteNotificationsCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KADRemoteNotificationsCondition.m; sourceTree = "<group>"; };
+		50383B351B49518800FEB2B7 /* NSError+KADOperationErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+KADOperationErrors.h"; sourceTree = "<group>"; };
+		50383B361B49518800FEB2B7 /* NSError+KADOperationErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+KADOperationErrors.m"; sourceTree = "<group>"; };
+		50383B381B49518800FEB2B7 /* KADBlockObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KADBlockObserver.h; sourceTree = "<group>"; };
+		50383B391B49518800FEB2B7 /* KADBlockObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KADBlockObserver.m; sourceTree = "<group>"; };
+		50383B3A1B49518800FEB2B7 /* KADOperationObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KADOperationObserver.h; sourceTree = "<group>"; };
+		50383B3C1B49518800FEB2B7 /* KADExclusivityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KADExclusivityController.h; sourceTree = "<group>"; };
+		50383B3D1B49518800FEB2B7 /* KADExclusivityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KADExclusivityController.m; sourceTree = "<group>"; };
+		50383B3E1B49518800FEB2B7 /* KADOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KADOperationQueue.h; sourceTree = "<group>"; };
+		50383B3F1B49518800FEB2B7 /* KADOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KADOperationQueue.m; sourceTree = "<group>"; };
+		50383B411B49518800FEB2B7 /* KADBlockOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KADBlockOperation.h; sourceTree = "<group>"; };
+		50383B421B49518800FEB2B7 /* KADBlockOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KADBlockOperation.m; sourceTree = "<group>"; };
+		50383B431B49518800FEB2B7 /* KADGroupOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KADGroupOperation.h; sourceTree = "<group>"; };
+		50383B441B49518800FEB2B7 /* KADGroupOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KADGroupOperation.m; sourceTree = "<group>"; };
+		50383B451B49518800FEB2B7 /* KADOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KADOperation.h; sourceTree = "<group>"; };
+		50383B461B49518800FEB2B7 /* KADOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KADOperation.m; sourceTree = "<group>"; };
+		50383B551B49713500FEB2B7 /* KADBackgroundObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KADBackgroundObserver.h; sourceTree = "<group>"; };
+		50383B561B49713500FEB2B7 /* KADBackgroundObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KADBackgroundObserver.m; sourceTree = "<group>"; };
 		50E34C2F1B4423C4002DD412 /* AdvancedNSOperation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdvancedNSOperation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50E34C331B4423C4002DD412 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50E34C341B4423C4002DD412 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -60,9 +107,82 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50383B241B49518800FEB2B7 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				50383B251B49518800FEB2B7 /* CKContainer+Operations.h */,
+				50383B261B49518800FEB2B7 /* CKContainer+Operations.m */,
+				50383B271B49518800FEB2B7 /* NSOperation+Advanced.h */,
+				50383B281B49518800FEB2B7 /* NSOperation+Advanced.m */,
+			);
+			name = Categories;
+			path = Operations/Categories;
+			sourceTree = "<group>";
+		};
+		50383B291B49518800FEB2B7 /* Conditions */ = {
+			isa = PBXGroup;
+			children = (
+				50383B2A1B49518800FEB2B7 /* KADCloudKitCondition.h */,
+				50383B2B1B49518800FEB2B7 /* KADCloudKitCondition.m */,
+				50383B2C1B49518800FEB2B7 /* KADMutualExclusive.h */,
+				50383B2D1B49518800FEB2B7 /* KADMutualExclusive.m */,
+				50383B2E1B49518800FEB2B7 /* KADOperationCondition.h */,
+				50383B2F1B49518800FEB2B7 /* KADOperationConditionResult.h */,
+				50383B301B49518800FEB2B7 /* KADOperationConditionResult.m */,
+				50383B311B49518800FEB2B7 /* KADReachabilityCondition.h */,
+				50383B321B49518800FEB2B7 /* KADReachabilityCondition.m */,
+				50383B331B49518800FEB2B7 /* KADRemoteNotificationsCondition.h */,
+				50383B341B49518800FEB2B7 /* KADRemoteNotificationsCondition.m */,
+				50383B351B49518800FEB2B7 /* NSError+KADOperationErrors.h */,
+				50383B361B49518800FEB2B7 /* NSError+KADOperationErrors.m */,
+			);
+			name = Conditions;
+			path = Operations/Conditions;
+			sourceTree = "<group>";
+		};
+		50383B371B49518800FEB2B7 /* Observers */ = {
+			isa = PBXGroup;
+			children = (
+				50383B3A1B49518800FEB2B7 /* KADOperationObserver.h */,
+				50383B381B49518800FEB2B7 /* KADBlockObserver.h */,
+				50383B391B49518800FEB2B7 /* KADBlockObserver.m */,
+				50383B551B49713500FEB2B7 /* KADBackgroundObserver.h */,
+				50383B561B49713500FEB2B7 /* KADBackgroundObserver.m */,
+			);
+			name = Observers;
+			path = Operations/Observers;
+			sourceTree = "<group>";
+		};
+		50383B3B1B49518800FEB2B7 /* Operation Queue */ = {
+			isa = PBXGroup;
+			children = (
+				50383B3C1B49518800FEB2B7 /* KADExclusivityController.h */,
+				50383B3D1B49518800FEB2B7 /* KADExclusivityController.m */,
+				50383B3E1B49518800FEB2B7 /* KADOperationQueue.h */,
+				50383B3F1B49518800FEB2B7 /* KADOperationQueue.m */,
+			);
+			name = "Operation Queue";
+			path = "Operations/Operation Queue";
+			sourceTree = "<group>";
+		};
+		50383B401B49518800FEB2B7 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				50383B451B49518800FEB2B7 /* KADOperation.h */,
+				50383B461B49518800FEB2B7 /* KADOperation.m */,
+				50383B411B49518800FEB2B7 /* KADBlockOperation.h */,
+				50383B421B49518800FEB2B7 /* KADBlockOperation.m */,
+				50383B431B49518800FEB2B7 /* KADGroupOperation.h */,
+				50383B441B49518800FEB2B7 /* KADGroupOperation.m */,
+			);
+			name = Operations;
+			path = Operations/Operations;
+			sourceTree = "<group>";
+		};
 		50E34C261B4423C4002DD412 = {
 			isa = PBXGroup;
 			children = (
+				50E34C581B4423D0002DD412 /* Operations */,
 				50E34C311B4423C4002DD412 /* AdvancedNSOperation */,
 				50E34C4B1B4423C4002DD412 /* AdvancedNSOperationTests */,
 				50E34C301B4423C4002DD412 /* Products */,
@@ -117,6 +237,18 @@
 				50E34C4D1B4423C4002DD412 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		50E34C581B4423D0002DD412 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				50383B241B49518800FEB2B7 /* Categories */,
+				50383B291B49518800FEB2B7 /* Conditions */,
+				50383B371B49518800FEB2B7 /* Observers */,
+				50383B3B1B49518800FEB2B7 /* Operation Queue */,
+				50383B401B49518800FEB2B7 /* Operations */,
+			);
+			name = Operations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +351,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50383B4A1B49518800FEB2B7 /* KADMutualExclusive.m in Sources */,
+				50383B4C1B49518800FEB2B7 /* KADReachabilityCondition.m in Sources */,
 				50E34C3B1B4423C4002DD412 /* ViewController.m in Sources */,
 				50E34C381B4423C4002DD412 /* AppDelegate.m in Sources */,
+				50383B481B49518800FEB2B7 /* NSOperation+Advanced.m in Sources */,
+				50383B501B49518800FEB2B7 /* KADExclusivityController.m in Sources */,
+				50383B4D1B49518800FEB2B7 /* KADRemoteNotificationsCondition.m in Sources */,
+				50383B541B49518800FEB2B7 /* KADOperation.m in Sources */,
+				50383B571B49713500FEB2B7 /* KADBackgroundObserver.m in Sources */,
+				50383B521B49518800FEB2B7 /* KADBlockOperation.m in Sources */,
 				50E34C351B4423C4002DD412 /* main.m in Sources */,
+				50383B511B49518800FEB2B7 /* KADOperationQueue.m in Sources */,
+				50383B471B49518800FEB2B7 /* CKContainer+Operations.m in Sources */,
+				50383B4F1B49518800FEB2B7 /* KADBlockObserver.m in Sources */,
+				50383B531B49518800FEB2B7 /* KADGroupOperation.m in Sources */,
+				50383B491B49518800FEB2B7 /* KADCloudKitCondition.m in Sources */,
+				50383B4B1B49518800FEB2B7 /* KADOperationConditionResult.m in Sources */,
+				50383B4E1B49518800FEB2B7 /* NSError+KADOperationErrors.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +565,7 @@
 				50E34C541B4423C4002DD412 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		50E34C551B4423C4002DD412 /* Build configuration list for PBXNativeTarget "AdvancedNSOperationTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +574,7 @@
 				50E34C571B4423C4002DD412 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
