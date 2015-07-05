@@ -16,6 +16,17 @@
 @end
 
 @implementation KADOperation
+
+// use the KVO mechanism to indicate that changes to "state" affect other properties as well
++(NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key
+{
+    if ([@[@"isReady", @"isExecuting", @"isFinished",@"isCancelled"] containsObject:key])
+    {
+        return [NSSet setWithArray:@[@"state"]];
+    }
+    return [super keyPathsForValuesAffectingValueForKey:key];
+}
+
 /**
  Indicates that the Operation can now begin to evaluate readiness conditions,
  if appropriate.

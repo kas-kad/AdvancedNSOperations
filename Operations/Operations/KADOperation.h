@@ -53,5 +53,7 @@ typedef NS_ENUM(NSUInteger, KADOperationState) {
 -(void)finish;
 -(void)finish:(NSArray *)errors;
 -(void)finishWithError:(NSError *)error;
+-(void)finished:(NSArray *)errors;
 -(void)execute;
+-(void)produceOperation:(NSOperation *)operation;
 @end

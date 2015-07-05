@@ -7,7 +7,6 @@
 //
 
 #import "KADBackgroundObserver.h"
-//#import "KADOperation.h"
 #import <UIKit/UIApplication.h>
 
 /**
