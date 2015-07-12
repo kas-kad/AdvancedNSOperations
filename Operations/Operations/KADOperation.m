@@ -108,6 +108,13 @@
 
 
 #pragma mark - CONDITIONS
+-(NSMutableArray *)conditions
+{
+    if (!_conditions){
+        _conditions = [NSMutableArray array];
+    }
+    return _conditions;
+}
 -(void)addCondition:(NSObject <KADOperationCondition>*)condition
 {
     NSAssert(self.state < KADEvaluatingConditions, @"Cannot modify conditions after execution has begun.");
@@ -119,8 +126,14 @@
     [super addDependency:op];
 }
 
-
 #pragma mark - OBSERVERS
+-(NSMutableArray *)observers
+{
+    if (!_observers){
+        _observers = [NSMutableArray array];
+    }
+    return _observers;
+}
 -(void)addObserver:(NSObject <KADOperationObserver> *)observer
 {
     NSAssert(self.state < KADExecuting, @"Cannot modify observers after execution has begun.");
