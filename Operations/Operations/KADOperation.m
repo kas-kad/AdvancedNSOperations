@@ -118,7 +118,7 @@
 -(void)addCondition:(NSObject <KADOperationCondition>*)condition
 {
     NSAssert(self.state < KADEvaluatingConditions, @"Cannot modify conditions after execution has begun.");
-    [_conditions addObject:condition];
+    [self.conditions addObject:condition];
 }
 -(void)addDependency:(NSOperation *)op
 {
@@ -137,7 +137,7 @@
 -(void)addObserver:(NSObject <KADOperationObserver> *)observer
 {
     NSAssert(self.state < KADExecuting, @"Cannot modify observers after execution has begun.");
-    [_observers addObject:observer];
+    [self.observers addObject:observer];
 }
 
 #pragma mark - Execution and Cancellation
@@ -146,7 +146,7 @@
     NSAssert(self.state == KADReady, @"This operation must be performed on an operation queue.");
     self.state = KADExecuting;
     
-    for (NSObject <KADOperationObserver> *observer in _observers) {
+    for (NSObject <KADOperationObserver> *observer in self.observers) {
         [observer operationDidStart:self];
     }
     
