@@ -50,7 +50,7 @@
          NSMutableArray * concurrencyCategories = [NSMutableArray array];
          
          [op.conditions enumerateObjectsUsingBlock:^(NSObject <KADOperationCondition> *condition, NSUInteger idx, BOOL *stop){
-             if ([condition isMutuallyExclusive]){
+             if (![condition isMutuallyExclusive]){
                  return;
              }
              [concurrencyCategories addObject:condition.name];

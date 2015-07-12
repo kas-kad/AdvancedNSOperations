@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>E5B32B0E-06A7-48F4-98E1-7B01C0398FF6</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>AdvancedNSOperation</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>82A41DC45B24A61596FF8F8B32708334E6A64064</key>
 		<string>https://github.com/purrrminator/AdvancedNSOperations.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>AdvancedNSOperation.xcodeproj/project.xcworkspace</string>
+	<string>AdvancedNSOperation.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>82A41DC45B24A61596FF8F8B32708334E6A64064</key>
