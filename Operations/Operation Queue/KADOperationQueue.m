@@ -33,7 +33,10 @@
         NSMutableArray * dependencies = [NSMutableArray arrayWithCapacity:op.conditions.count];
         [op.conditions enumerateObjectsUsingBlock:^(NSObject <KADOperationCondition> * condition, NSUInteger idx, BOOL *stop)
         {
-            [dependencies addObject:[condition dependencyForOperation:op]];
+            NSOperation * dependency = [condition dependencyForOperation:op];
+            if (dependency){
+                [dependencies addObject:dependency];
+            }
         }];
         
         [dependencies enumerateObjectsUsingBlock:^(NSOperation * dependency, NSUInteger idx, BOOL *stop)

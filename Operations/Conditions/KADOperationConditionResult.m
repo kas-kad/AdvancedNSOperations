@@ -64,7 +64,7 @@ NSString * kOperationConditionKey = @"OperationCondition";
     // After all the conditions have evaluated, this block will execute.
     dispatch_group_notify(conditionGroup, dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
         // Aggregate the errors that occurred, in order.
-        NSArray * failures = [results valueForKeyPath:@"error"];
+        NSArray * failures = [[results filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"error != nil"]] valueForKeyPath:@"error"];
         
         /*
          If any of the conditions caused this operation to be cancelled,
