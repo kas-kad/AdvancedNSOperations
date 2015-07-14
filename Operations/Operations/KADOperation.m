@@ -115,12 +115,12 @@
     }
     return _conditions;
 }
--(void)addCondition:(NSObject <KADOperationCondition>*)condition
+-(void)addCondition:(NSObject <KADOperationCondition> __nonnull*)condition
 {
     NSAssert(self.state < KADEvaluatingConditions, @"Cannot modify conditions after execution has begun.");
     [self.conditions addObject:condition];
 }
--(void)addDependency:(NSOperation *)op
+-(void)addDependency:(NSOperation __nonnull*)op
 {
     NSAssert(self.state <= KADExecuting, @"Dependencies cannot be modified after execution has begun.");
     [super addDependency:op];
@@ -134,7 +134,7 @@
     }
     return _observers;
 }
--(void)addObserver:(NSObject <KADOperationObserver> *)observer
+-(void)addObserver:(NSObject <KADOperationObserver> __nonnull*)observer
 {
     NSAssert(self.state < KADExecuting, @"Cannot modify observers after execution has begun.");
     [self.observers addObject:observer];
@@ -172,13 +172,13 @@
 {
     [self cancelWithError:nil];
 }
--(void)cancelWithError:(NSError *)error
+-(void)cancelWithError:(NSError __nullable*)error
 {
 
     [self.internalErrors addObject:error];
     self.state = KADCancelled;
 }
--(void)produceOperation:(NSOperation *)operation
+-(void)produceOperation:(NSOperation __nonnull*)operation
 {
     for (NSObject <KADOperationObserver> *observer in self.observers) {
         [observer operation:self didProduceOperation:operation];
@@ -198,7 +198,7 @@
 {
     [self finish:nil];
 }
--(void)finishWithError:(NSError *)error
+-(void)finishWithError:(NSError __nullable*)error
 {
     if (error){
         [self finish:@[error]];
@@ -211,7 +211,7 @@
  A private property to ensure we only notify the observers once that the
  operation has finished.
  */
--(void)finish:(NSArray *)errors
+-(void)finish:(NSArray __nullable*)errors
 {
     if (!_hasFinishedAlready)
     {
@@ -235,7 +235,7 @@
  this method to potentially inform the user about an error when trying to
  bring up the Core Data stack.
  */
--(void)finished:(NSArray *)errors
+-(void)finished:(NSArray __nullable*)errors
 {
     // No op.
 }

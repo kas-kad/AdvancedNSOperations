@@ -42,18 +42,20 @@ typedef NS_ENUM(NSUInteger, KADOperationState) {
     KADCancelled
 };
 
+NS_ASSUME_NONNULL_BEGIN
 @interface KADOperation : NSOperation
 @property (nonatomic, assign) BOOL userInitiated;
 @property (nonatomic, readonly) KADOperationState state;
 @property (nonatomic, strong) NSMutableArray * conditions, * observers, * internalErrors;;
+NS_ASSUME_NONNULL_END
 
--(void)addObserver:(NSObject <KADOperationObserver> *)observer;
--(void)addCondition:(NSObject <KADOperationCondition>*)condition;
+-(void)addObserver:(NSObject <KADOperationObserver> __nonnull*)observer;
+-(void)addCondition:(NSObject <KADOperationCondition> __nonnull*)condition;
 -(void)willEnqueue;
 -(void)finish;
--(void)finish:(NSArray *)errors;
--(void)finishWithError:(NSError *)error;
--(void)finished:(NSArray *)errors;
+-(void)finish:(NSArray __nullable*)errors;
+-(void)finishWithError:(NSError __nullable*)error;
+-(void)finished:(NSArray __nullable*)errors;
 -(void)execute;
--(void)produceOperation:(NSOperation *)operation;
+-(void)produceOperation:(NSOperation __nonnull*)operation;
 @end
