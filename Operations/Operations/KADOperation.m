@@ -10,17 +10,29 @@
 #import "KADOperationObserver.h"
 #import "KADOperationCondition.h"
 
-@interface KADOperation ()
+@interface KADOperation () {
+    KADOperationState _state;
+}
+@property (nonatomic, strong) NSMutableArray * kad_internalErrors;
 @property (nonatomic, assign) BOOL hasFinishedAlready;
-@property (nonatomic, assign) KADOperationState state;
 @end
 
 @implementation KADOperation
 
+#pragma mark - LAZY VARS
+-(NSMutableArray *)kad_internalErrors
+{
+    if (!_kad_internalErrors) {
+        _kad_internalErrors = [NSMutableArray array];
+    }
+    return _kad_internalErrors;
+}
+
+#pragma mark - KVO
 // use the KVO mechanism to indicate that changes to "state" affect other properties as well
 +(NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key
 {
-    if ([@[@"isReady", @"isExecuting", @"isFinished",@"isCancelled"] containsObject:key])
+    if ([@[@"isReady", @"isExecuting", @"isFinished"] containsObject:key])
     {
         return [NSSet setWithArray:@[@"state"]];
     }
@@ -31,19 +43,37 @@
  Indicates that the Operation can now begin to evaluate readiness conditions,
  if appropriate.
  */
+-(BOOL)canTransitionToState:(KADOperationState)target
+{
+    return (self.state == KADInitialized && target == KADPending)
+        || (self.state == KADPending && target == KADEvaluatingConditions)
+        || (self.state == KADEvaluatingConditions && target == KADReady)
+        || (self.state == KADReady && target == KADExecuting)
+        || (self.state == KADReady && target == KADFinishing)
+        || (self.state == KADExecuting && target == KADFinishing)
+        || (self.state == KADFinishing && target == KADFinished);
+}
+
 -(void)willEnqueue
 {
     self.state = KADPending;
+}
+-(KADOperationState)state
+{
+    @synchronized(self) {
+        return _state;
+    }
 }
 -(void)setState:(KADOperationState)newState
 {
     // Manually fire the KVO notifications for state change, since this is "private".
     [self willChangeValueForKey:@"state"];
     
-    // cannot leave the cancelled state
-    // cannot leave the finished state
-    if (_state != KADCancelled && _state != KADFinished){
-        NSAssert(_state != newState, @"Performing invalid cyclic state transition.");
+    @synchronized(self) {
+        if (_state == KADFinished) {
+            return;
+        }
+        NSAssert([self canTransitionToState:newState], @"Performing invalid state transition.");
         _state = newState;
     }
     
@@ -52,18 +82,25 @@
 -(BOOL)isReady
 {
     switch (self.state) {
+        case KADInitialized:
+            // If the operation has been cancelled, "isReady" should return true
+            return self.cancelled;
         case KADPending:
-            if ([super isReady]) {
-                [self evaluateConditions];
+            // If the operation has been cancelled, "isReady" should return true
+            if (self.cancelled) {
+                return YES;
+            } else {
+                // If super isReady, conditions can be evaluated
+                if (super.ready) {
+                    [self evaluateConditions];
+                }
+                // Until conditions have been evaluated, "isReady" returns false
+                return NO;
             }
-            return false;
-            break;
         case KADReady:
-            return [super isReady];
-            break;
+            return super.ready || self.cancelled;
         default:
             return NO;
-            break;
     }
 }
 -(BOOL)userInitiated
@@ -83,29 +120,17 @@
 {
     return self.state == KADFinished;
 }
--(BOOL)isCancelled
-{
-    return self.state == KADCancelled;
-}
 -(void)evaluateConditions
 {
-    NSAssert(self.state == KADPending, @"evaluateConditions() was called out-of-order");
+    NSAssert(self.state == KADPending && !self.cancelled, @"evaluateConditions() was called out-of-order");
     
     self.state = KADEvaluatingConditions;
     
     [KADOperationConditionResult evaluateConditions:self.conditions operation:self completion:^(NSArray * failures) {
-        
-        if (failures.count == 0) {
-            // If there were no errors, we may proceed.
-            self.state = KADReady;
-        }
-        else {
-            self.state = KADCancelled;
-            [self finish:failures];
-        }
+        [self.kad_internalErrors addObjectsFromArray:failures];
+        self.state = KADReady;
     }];
 }
-
 
 #pragma mark - CONDITIONS
 -(NSMutableArray *)conditions
@@ -117,12 +142,12 @@
 }
 -(void)addCondition:(NSObject <KADOperationCondition>*)condition
 {
-    NSAssert(self.state < KADEvaluatingConditions, @"Cannot modify conditions after execution has begun.");
+    NSAssert(self.state < KADEvaluatingConditions, @"Cannot modify observers after execution has begun.");
     [self.conditions addObject:condition];
 }
 -(void)addDependency:(NSOperation *)op
 {
-    NSAssert(self.state <= KADExecuting, @"Dependencies cannot be modified after execution has begun.");
+    NSAssert(self.state < KADExecuting, @"Dependencies cannot be modified after execution has begun.");
     [super addDependency:op];
 }
 
@@ -143,16 +168,27 @@
 #pragma mark - Execution and Cancellation
 -(void)start
 {
-    NSAssert(self.state == KADReady, @"This operation must be performed on an operation queue.");
+    // NSOperation.start() contains important logic that shouldn't be bypassed.
     self.state = KADExecuting;
     
-    for (NSObject <KADOperationObserver> *observer in self.observers) {
-        [observer operationDidStart:self];
+    // If the operation has been cancelled, we still need to enter the "Finished" state.
+    if (self.cancelled) {
+        [self finish];
     }
-    
-    [self execute];
 }
-
+-(void)main
+{
+    NSAssert(self.state == KADReady, @"This operation must be performed on an operation queue.");
+    if (self.kad_internalErrors.count == 0 && !self.cancelled) {
+        self.state = KADExecuting;
+        for (NSObject <KADOperationObserver>* observer in self.observers) {
+            [observer operationDidStart:self];
+        }
+        [self execute];
+    } else {
+        [self finish];
+    }
+}
 /**
  `execute()` is the entry point of execution for all `Operation` subclasses.
  If you subclass `Operation` and wish to customize its execution, you would
@@ -166,7 +202,7 @@
 -(void)execute
 {
     NSLog(@"%@ must override `execute()`.", NSStringFromClass(self.class));
-    [self finish:nil];
+    [self finish];
 }
 -(void)cancel
 {
@@ -174,9 +210,10 @@
 }
 -(void)cancelWithError:(NSError *)error
 {
-
-    [self.internalErrors addObject:error];
-    self.state = KADCancelled;
+    if (error) {
+        [self.kad_internalErrors addObject:error];
+    }
+    [self cancel];
 }
 -(void)produceOperation:(NSOperation *)operation
 {
@@ -213,12 +250,15 @@
  */
 -(void)finish:(NSArray *)errors
 {
-    if (!_hasFinishedAlready)
+    if (!self.hasFinishedAlready)
     {
-        _hasFinishedAlready = YES;
+        self.hasFinishedAlready = YES;
         self.state = KADFinishing;
         
-        NSArray * combinedErrors = [_internalErrors arrayByAddingObjectsFromArray:errors];
+        NSArray * combinedErrors = self.kad_internalErrors.copy;
+        if (errors) {
+            combinedErrors = [combinedErrors arrayByAddingObjectsFromArray:errors];
+        }
         [self finished:combinedErrors];
         
         for (NSObject <KADOperationObserver>* observer in self.observers) {

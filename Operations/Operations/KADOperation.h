@@ -36,10 +36,7 @@ typedef NS_ENUM(NSUInteger, KADOperationState) {
     KADFinishing,
     
     /// The `Operation` has finished executing.
-    KADFinished,
-    
-    /// The `Operation` has been cancelled.
-    KADCancelled
+    KADFinished
 };
 
 @interface KADOperation : NSOperation
