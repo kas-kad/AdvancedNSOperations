@@ -169,7 +169,7 @@
 -(void)start
 {
     // NSOperation.start() contains important logic that shouldn't be bypassed.
-    self.state = KADExecuting;
+    [super start];
     
     // If the operation has been cancelled, we still need to enter the "Finished" state.
     if (self.cancelled) {
