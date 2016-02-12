@@ -36,6 +36,7 @@
         _internalQueue = [KADOperationQueue new];
         _internalQueue.suspended = YES;
         _internalQueue.delegate = self;
+        _finishingOperation = [[NSBlockOperation alloc] init];
         
         for (NSOperation * op in operations){
             [_internalQueue addOperation:op];
