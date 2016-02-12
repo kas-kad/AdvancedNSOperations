@@ -206,7 +206,13 @@
 }
 -(void)cancel
 {
-    [self cancelWithError:nil];
+    if (self.finished) {
+        return;
+    }
+    [super cancel];
+    if (self.state > KADReady) {
+        [self finish];
+    }
 }
 -(void)cancelWithError:(NSError *)error
 {
