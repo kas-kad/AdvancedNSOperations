@@ -6,4 +6,4 @@ Work in progress. Want to help? Please check the issues: https://github.com/purr
 Original codebase has been written on Swift, download link: https://developer.apple.com/sample-code/wwdc/2015/downloads/Advanced-NSOperations.zip
 
 
-**Plese note, that the original code had some bugs, so tehre is no guarantee that this objective-c port doesn't have them as well.**
+**Plese note, that the original code had some bugs, so there is no guarantee that this objective-c port doesn't have them as well.**
