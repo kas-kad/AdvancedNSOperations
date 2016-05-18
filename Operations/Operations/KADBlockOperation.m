@@ -34,10 +34,12 @@
 -(instancetype)initWithMainQueueBlock:(dispatch_block_t)block
 {
     self = [self initWithBlock:^(void(^operationCompletionBlock)(void)) {
-        block();
-        if (operationCompletionBlock){
-            operationCompletionBlock();
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            block();
+            if (operationCompletionBlock){
+                operationCompletionBlock();
+            }
+        });
     }];
     return self;
 }
